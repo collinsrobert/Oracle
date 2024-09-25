@@ -1,3 +1,10 @@
+
+
+
+/*
+This will list details for ASM DISK GROUPS
+**/
+
 SELECT
     name                                     group_name
   , sector_size                              sector_size
