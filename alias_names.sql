@@ -1,3 +1,9 @@
+/*
+
+ (Oracle ASM) instance, V$ASM_ALIAS displays one row for every alias present in every 
+disk group mounted by the Oracle ASM instance.
+*/
+
 SELECT
     g.name               disk_group_name
   , a.name               alias_name
