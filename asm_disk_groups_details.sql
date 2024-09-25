@@ -2,7 +2,7 @@
 
 
 /*
-This will list details for ASM DISK GROUPS
+This will list details for ASM DISK GROUPS.
 **/
 
 SELECT
