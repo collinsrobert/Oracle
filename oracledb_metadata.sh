@@ -5,7 +5,7 @@
 
   # Set oracle database name in the environment
   export ORACLE_SID="LIUSIGHTDB" ####Enter Oracle SID name
-  export ORACLE_HOME="/ora01/oracle/production/19c_home"     #########Enetr oracle home
+  export ORACLE_HOME="/ora01/oracle/production/19c_home"     #########Enter oracle home
   . oraenv <<< "$ORACLE_SID"
   
   
