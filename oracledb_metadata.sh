@@ -4,8 +4,8 @@
 
 
   # Set oracle database name in the environment
-  export ORACLE_SID="$1"
-  export ORACLE_HOME="$2"
+  export ORACLE_SID="LIUSIGHTDB" ####Enter Oracle SID name
+  export ORACLE_HOME="/ora01/oracle/production/19c_home"     #########Enetr oracle home
   . oraenv <<< "$ORACLE_SID"
   
   
@@ -116,7 +116,7 @@ EOF
 echo -e "\nOS-level details:" | tee -a "$log_file"
 echo -e "\nDisk Usage:\n$(df -kh)" | tee -a "$log_file"
 echo -e "\nFree Memory:\n$(free -g)" | tee -a "$log_file"
-echo -e "\nCPU Information:\n$(sudo lscpu)" | tee -a "$log_file"
+echo -e "\nCPU Information:\n$( lscpu)" | tee -a "$log_file"
 
 # Create pfile.log from spfile
 echo -e "\nCreating pfile.log from spfile:" | tee -a "$log_file"
