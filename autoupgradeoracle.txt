@@ -1,0 +1,101 @@
+
+
+https://dohdatabase.com/2025/07/09/the-easiest-way-to-download-patches-for-oracle-grid-infrastructure/
+
+
+
+pport credentials. You find instructions on how to do that here (search for Creating an AutoUpgrade Keystore).
+
+I download the latest version of AutoUpgrade:
+
+wget https://download.oracle.com/otn-pub/otn_software/autoupgrade.jar
+I create a config file called get-gi-patches.cfg:
+
+global.global_log_dir=/home/oracle/autoupgrade/logs
+global.keystore=/home/oracle/autoupgrade/keystore
+
+patch1.patch=RU,OPATCH,OCW
+patch1.target_version=19
+patch1.platform=LINUX.X64
+patch1.folder=/home/oracle/autoupgrade/patches
+I create the folder for the patches (config file parameter folder).
+
+mkdir -p /home/oracle/autoupgrade/patches
+I download the patches by starting AutoUpgrade in download mode:
+
+java -jar autoupgrade.jar -config get-gi-patches.cfg -mode download
+Here’s the output from AutoUpgrade:
+
+AutoUpgrade Patching 25.3.250509 launched with default internal options
+Processing config file ...
+Loading AutoUpgrade Patching keystore
+AutoUpgrade Patching keystore is loaded
+
+Connected to MOS - Searching for specified patches
+
+-----------------------------------------------------
+Downloading files to /home/oracle/autoupgrade/patches
+-----------------------------------------------------
+DATABASE RELEASE UPDATE 19.27.0.0.0
+    File: p37642901_190000_Linux-x86-64.zip - VALIDATED
+
+GI RELEASE UPDATE 19.27.0.0.0
+    File: p37641958_190000_Linux-x86-64.zip - VALIDATED
+
+OPatch 12.2.0.1.46 for DB 19.0.0.0.0 (Apr 2025)
+    File: p6880880_190000_Linux-x86-64.zip - VALIDATED
+-----------------------------------------------------   
+That’s it! After a few minutes, I’ve downloaded the latest GI Release Update and OPatch. GI RELEASE UPDATE 19.27.0.0.0 – p37641958_190000_Linux-x86-64.zip OPatch 12.2.0.1.46 for DB 19.0.0.0.0 (Apr 2025) – p6880880_190000_Linux-x86-64.zip
+
+Is it really that easy? Yes, it is…
+
+I can now patch my GI Oracle home – for Oracle RAC Database and Oracle Restart.
+
+Happy patching!
+
+
+
+
+
+
+
+
+
+
+
+https://dohdatabase.com/2025/04/16/the-easiest-way-to-download-19-27-release-update/
+
+
+
+Creating an AutoUpgrade Keystore
+The first time I use AutoUpgrade to download patches, I must store my MOS credentials in the AutoUpgrade keystore.
+
+I create my config file. It must include global.keystore to specify the location of the AutoUpgrade keystore.
+
+I start the password console:
+
+java -jar autoupgrade.jar -config get-patches -patch -load_password
+AutoUpgrade prompts for a password to protect its keystore. AutoUpgrade uses the password to encrypt the keystore, which stores my My Oracle Support credentials.
+
+This is not the database keystore password that you use for TDE Tablespace Encryption.
+Processing config file ...
+
+Starting AutoUpgrade Patching Password Loader - Type help for available options
+Creating new AutoUpgrade Patching keystore - Password required
+Enter password:
+Enter password again:
+I specify my MOS username. AutoUpgrade then prompts me for the MOS password:
+
+MOS> add -user <mos-username-or-email>
+Enter your secret/Password:
+Re-enter your secret/Password:
+I save the changes, and I choose to create an auto-login keystore so I don’t have to enter the AutoUpgrade keystore password every time AutoUpgrade starts:
+
+MOS> save
+Convert the AutoUpgrade Patching keystore to auto-login [YES|NO] ? YES
+I exit, and that’s it:
+
+MOS> exit
+
+AutoUpgrade Patching Password Loader finished - Exiting AutoUpgrade Patching
+Here’s a video explaining the use of the AutoUpgrade keystore:
