@@ -1,0 +1,17 @@
+run
+{
+CONFIGURE DEVICE TYPE DISK PARALLELISM 4 BACKUP TYPE TO BACKUPSET;
+
+set until time = "to_date(to_char(sysdate,'MM/DD/YYYY')||', 15:00:00','MM/DD/YYYY HH24:MI:SS')";
+
+duplicate target database to dev
+spfile
+set db_file_name_convert='+DATA_DG/PRODB/DATAFILE','/oradata/oracle/dev'
+set log_file_name_convert='+DATA_DG/PRODB/ONLINELOG','/oralog/oracle/dev','+FRA_DG/PRODB/ONLINELOG','/oralog/oracle/dev'
+set control_files='/oracntrl/oracle/dev/control01.ctl','/oracntrl/oracle/dev/control02.ctl'
+set db_name='dev1'
+set audit_file_dest='/ora01/oracle/admin/dev/adump'
+SET CLUSTER_DATABASE='FALSE'
+set log_archive_dest_1='LOCATION=/oraadmin/oracle/dev/archive/'
+NOFILENAMECHECK;
+}
