@@ -23,4 +23,10 @@ FROM   (
                 GROUP BY tablespace_name) b
         WHERE  a.tablespace_name = b.tablespace_name
        )
+
 ORDER BY tablespace_name;
+
+
+---select datafile name
+select ts.name,df.name from V$tablespace ts join v$datafile df on ts.ts#=df.ts#
+where ts.name='TABLESPACE_NAME'
