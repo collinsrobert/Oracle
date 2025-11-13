@@ -1,0 +1,31 @@
+rwxrwxrwx 1 root root 111 Sep 21  2021 cluster_resources_status.sh
+~]# cat cluster_resources_status.sh
+/ora01/app/grid/bin/crsctl check has
+/ora01/app/grid/bin/crsctl check css
+/ora01/app/grid/bin/crsctl check evm
+
+
+
+
+0
+-rw-r--r--  1 oracle oinstall       1570 Dec 27  2021  adump_purge.sql
+-rw-r--r--  1 oracle oinstall         93 Oct 30  2023  archive_log_not_applied.sql
+-rwx------  1 oracle oinstall        237 Oct 31  2023  check_database_duplicate_progress.sql
+-rw-r-----. 1 oracle oinstall      26800 Jun 29  2021  dbca.rsp
+-rw-r--r--. 1 oracle oinstall 1375008229 Jun 15  2021  p32545013_190000_Linux-x86-64.zip
+-rwx------  1 oracle oinstall        118 Nov  2  2023  register_logfiles.sql
+drwxr-xr-x  2 oracle oinstall         55 Mar 24  2023  standby
+-rw-r--r--  1 oracle oinstall         82 Mar 21  2023  standby_mrp.sql
+-rwx------  1 oracle oinstall         56 Jan 17  2023  start_agent.sh
+-rwx------  1 oracle oinstall         34 Jan 17  2023  start_cloud13c.sh
+-rwx------  1 oracle oinstall         31 Jan 17  2023  start_imgdb.sh
+-rwx------  1 oracle oinstall         14 Apr 18  2023  start_listener.sh
+-rwx------  1 oracle oinstall         43 Aug 17  2021  start.sh
+-rwx------  1 oracle oinstall         57 Jan 17  2023  status_agent.sh
+-rwx------  1 oracle oinstall         35 Jun 18  2024  status_cloud13c.sh
+-rwx------  1 oracle oinstall         15 Apr 18  2023  status_listener.sh
+-rwxrwxrwx  1 oracle oinstall         44 Aug 17  2021  status.sh
+-rwx------  1 oracle oinstall         13 Apr 18  2023  stop_listener.sh
+
+
+
